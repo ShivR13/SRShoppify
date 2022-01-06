@@ -1,0 +1,67 @@
+$small: 300px;
+$medium: 990px;
+$heading1: "Dancing Script", cursive;
+$heading2: "Lobster", cursive;
+$heading3: "Pacifico", cursive;
+
+#Name {
+  margin-left: auto;
+  //   padding: 0 0.5em;
+  display: none;
+  @media screen and (max-width: $small) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media screen and (max-width: $medium) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+#heading {
+  font-family: $heading1;
+  font-size: 1.5em;
+  font-weight: bolder;
+  text-shadow: 1px 2px 3px grey;
+  color: #102a42;
+}
+#heading > span {
+  color: #ab7a5f;
+}
+#hamburger {
+  border: none;
+  &:active {
+    border: none;
+  }
+}
+.navbar-toggler {
+  text-decoration: none;
+  border: none;
+  box-shadow: none;
+  padding: 0 0.3em;
+  &:focus {
+    text-decoration: none;
+    box-shadow: none;
+  }
+}
+.nav-item {
+  padding: 0 0.6em;
+}
+.nav-link {
+  display: inline-block;
+  padding: 0.2em;
+  margin: 0 0.6em;
+  &:hover,
+  :focus,
+  :active {
+    width: 50%;
+    border-bottom: 2px solid#ab7a5f;
+  }
+  &::after {
+    border-bottom: 2px solid#ab7a5f;
+  }
+}
+.active-link {
+  border-bottom: 2px solid#ab7a5f;
+}
