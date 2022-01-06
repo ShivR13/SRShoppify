@@ -51,5 +51,17 @@
   },
   "devDependencies": {
     "sass": "^1.45.2"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShivR13/SRShoppify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShivR13/SRShoppify/issues"
+  },
+  "homepage": "https://github.com/ShivR13/SRShoppify#readme"
 }
