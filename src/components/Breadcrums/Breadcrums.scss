@@ -1,0 +1,11 @@
+@import "../../root.scss";
+
+.bread-ctr {
+  display: flex;
+  align-content: center;
+  justify-content: flex-start;
+  background: $clr-primary-10;
+  width: 100%;
+  min-height: 10vh;
+  color: $clr-primary-1;
+}

@@ -1,0 +1,23 @@
+@import "../../../root.scss";
+
+.sub-ctr {
+  margin: 0 0 6em 0;
+  h3 {
+    font-weight: bolder;
+    color: $clr-grey-1;
+    padding: 1em 0;
+    line-height: 1;
+    font-size: 2.5rem;
+  }
+  p {
+    color: $clr-grey-5;
+    padding-right: 20%;
+    max-width: 45em !important;
+  }
+  div:nth-child(3) {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 1em 0;
+  }
+}

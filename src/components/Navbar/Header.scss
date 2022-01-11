@@ -1,8 +1,4 @@
-$small: 300px;
-$medium: 990px;
-$heading1: "Dancing Script", cursive;
-$heading2: "Lobster", cursive;
-$heading3: "Pacifico", cursive;
+@import "../../root.scss";
 
 #Name {
   margin-left: auto;
@@ -28,6 +24,7 @@ $heading3: "Pacifico", cursive;
 }
 #heading > span {
   color: #ab7a5f;
+  font-family: $heading1;
 }
 #hamburger {
   border: none;
@@ -64,4 +61,8 @@ $heading3: "Pacifico", cursive;
 }
 .active-link {
   border-bottom: 2px solid#ab7a5f;
+}
+#header {
+  height: 4rem;
+  background-color: white !important;
 }

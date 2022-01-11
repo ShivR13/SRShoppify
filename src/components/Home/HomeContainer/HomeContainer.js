@@ -1,12 +1,20 @@
 import React from "react";
-import { Container } from "react-bootstrap";
-import HomeLanding from "../HomeLanding";
+import { Container, Navbar } from "react-bootstrap";
+import Header from "../../Navbar/Header";
+import Landing from "../Landing/Landing";
+import NewsLetter from "../NewsLetter/NewsLetter";
+import ProductsFeatured from "../ProductsFeatured/ProductsFeatured";
+import Services from "../Services/Services";
+import "./HomeContainer.scss";
 
 const HomeContainer = () => {
   return (
-    <Container className="page-conatainer">
-      <HomeLanding />
-    </Container>
+    <>
+      <Landing />
+      <ProductsFeatured />
+      <Services />
+      <NewsLetter />
+    </>
   );
 };
 

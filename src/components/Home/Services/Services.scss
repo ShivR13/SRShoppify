@@ -1,0 +1,50 @@
+@import "../../../root.scss";
+.services-ctr {
+  background-image: linear-gradient(to bottom, $clr-primary-10 70%, white 30%);
+  @media screen and (max-width: $medium) {
+    background-image: linear-gradient(
+      to bottom,
+      $clr-primary-10 50%,
+      $clr-primary-10
+    );
+  }
+  div:nth-child(2) {
+    margin-bottom: 0px;
+    line-height: 1.8;
+    color: $clr-primary-3;
+  }
+  div:nth-child(1) {
+    h2 {
+      color: $clr-primary-1;
+      font-weight: bolder;
+    }
+  }
+  .service-card {
+    background: $clr-primary-7;
+    padding: 2.5rem 2rem;
+    border-radius: $radius;
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    height: 300px;
+    #avtr {
+      background-color: $clr-primary-10;
+      color: $clr-primary-1;
+      align-self: center;
+      justify-self: center;
+      margin: 0px auto 1rem;
+    }
+    h3 {
+      color: $clr-primary-1;
+      font-size: 1.5em;
+      font-weight: bold;
+      display: block !important;
+      margin: 0px auto 1rem;
+    }
+    p {
+      color: $clr-primary-2;
+    }
+  }
+}

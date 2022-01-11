@@ -1,0 +1,68 @@
+@import "../../../root.scss";
+
+.featured-container {
+  padding: 7em 4em !important;
+  background-color: $clr-grey-10;
+  .featured-heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      font-size: $main-heading2;
+      color: $clr-grey-1;
+      font-weight: bolder;
+    }
+    div {
+      width: 100px;
+      border-bottom: 5px solid $clr-primary-5;
+    }
+  }
+
+  .btn-conatiner {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 0.5em 0;
+  }
+}
+.product-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  .img {
+    width: 100%;
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: $radius;
+    transition: $transition;
+    height: 225px;
+  }
+
+  .btn {
+    z-index: 1 !important;
+    position: absolute;
+    top: 52%;
+    left: 55%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $clr-primary-5;
+    font-size: 1.5em;
+    color: white;
+  }
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.3rem;
+    letter-spacing: $spacing;
+    text-transform: capitalize;
+    line-height: 1.25;
+    & > label:nth-child(2) {
+      color: $clr-primary-5;
+    }
+  }
+}

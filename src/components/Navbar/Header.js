@@ -4,6 +4,7 @@ import "./Header.scss";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Button, IconButton, Badge } from "@mui/material";
+import { Link } from "react-router-dom";
 
 import { useAuth0 } from "@auth0/auth0-react";
 import Avatar from "@mui/material/Avatar";
@@ -12,22 +13,22 @@ const Header = () => {
   const { isLoading, isAuthenticated, error, user, loginWithRedirect, logout } =
     useAuth0();
 
-  useEffect(() => {
-    alert("isLoading", isLoading);
-  }, [isLoading]);
+  // useEffect(() => {
+  //   alert("isLoading", isLoading);
+  // }, [isLoading]);
 
-  useEffect(() => {
-    alert("isAuthenticated", isAuthenticated);
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   alert("isAuthenticated", isAuthenticated);
+  // }, [isAuthenticated]);
 
-  useEffect(() => {
-    alert("error", error);
-  }, [error]);
+  // useEffect(() => {
+  //   alert("error", error);
+  // }, [error]);
 
   return (
-    <Navbar bg="light" expand="lg" fixed="top">
+    <Navbar bg="light" expand="lg" fixed="top" id="header">
       <Container>
-        <Navbar.Brand id="heading" href="#home">
+        <Navbar.Brand id="heading" href="/">
           <span>SR</span> Shoppify
         </Navbar.Brand>
         <div id="Name">
@@ -66,21 +67,21 @@ const Header = () => {
             <Nav.Link
               onClick={() => setActiveLink("Home")}
               className={activeLink === "Home" && "active-link"}
-              href="/home"
+              href="/"
             >
               Home
             </Nav.Link>
             <Nav.Link
-              onClick={() => setActiveLink("Products")}
-              className={activeLink === "Products" && "active-link"}
-              href="/Products"
+              onClick={() => setActiveLink("Product")}
+              className={activeLink === "Product" && "active-link"}
+              href="/product"
             >
               Products
             </Nav.Link>
             <Nav.Link
               onClick={() => setActiveLink("About")}
               className={activeLink === "About" && "active-link"}
-              href="/About"
+              href="/about"
             >
               About
             </Nav.Link>
