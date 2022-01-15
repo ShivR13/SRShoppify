@@ -26,8 +26,14 @@ const Header = () => {
   // }, [error]);
 
   return (
-    <Navbar bg="light" expand="lg" fixed="top" id="header">
-      <Container>
+    <Navbar
+      style={{ padding: "0" }}
+      bg="light"
+      expand="lg"
+      fixed="top"
+      id="header"
+    >
+      <Container style={{ padding: "0" }}>
         <Navbar.Brand id="heading" href="/">
           <span>SR</span> Shoppify
         </Navbar.Brand>

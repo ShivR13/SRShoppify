@@ -8,8 +8,10 @@
   background-color: $clr-black;
   p {
     color: $clr-white;
+    margin: 0.1rem;
     font-weight: 400;
-    margin-bottom: 0 !important;
+    text-transform: none;
+    line-height: 1.25;
     span {
       color: $clr-primary-5;
     }

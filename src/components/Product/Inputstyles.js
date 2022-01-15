@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "0.25rem",
     borderColor: "transparent",
     letterSpacing: "0.1rem!important",
-    height: "2rem",
+    height: "1.8rem",
     maxWidth: "10rem",
     "&:hover": {
       color: "#102a42",
@@ -42,7 +42,9 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: "0.25rem !important",
       border: "1px solid lightgrey !important",
       letterSpacing: "0.1rem!important",
-      height: "1.8rem!important",
+      height: "1rem!important",
+      display: "flex",
+      flexDirection: "column",
       "&:hover": {
         border: "1px solid #102a42!important",
       },
@@ -55,6 +57,9 @@ const useStyles = makeStyles((theme) => ({
         borderColor: "#102a42!important",
       },
     },
+  },
+  label: {
+    display: "none",
   },
   selectOutline: {
     width: "100px",

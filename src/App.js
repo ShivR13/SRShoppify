@@ -5,6 +5,7 @@ import HomeContainer from "./components/Home/HomeContainer/HomeContainer";
 import Footer from "./components/Footer/Footer";
 import Product from "./components/Product/Product";
 import About from "./components/About/About";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
 function App() {
   const { isLoading, isAuthenticated, error, user, loginWithRedirect, logout } =
     useAuth0();
@@ -23,7 +24,10 @@ function App() {
           <Product />
         </Route>
         <Route exact path="/demo" component={About} />
+
+        <Route exact path="/product/:id" component={ProductDetails} />
       </Switch>
+
       <Footer />
     </BrowserRouter>
   );
