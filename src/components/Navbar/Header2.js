@@ -94,7 +94,7 @@ const Header2 = () => {
         <li className="link-li">
           <a href="/product"> Products</a>
         </li>
-        <li>
+        <li className="auth-ctr">
           {isAuthenticated ? (
             <Avatar
               style={{
@@ -162,12 +162,7 @@ const Header2 = () => {
               </Grid>
             </MenuItem>
             <Divider />
-            {/* <MenuItem style={{ display: "block", padding: "0 0.5rem" }}>
-                  My Orders
-                </MenuItem>
-                <MenuItem style={{ display: "block", padding: "0 0.5rem" }}>
-                  Wish List
-                </MenuItem> */}
+
             <MenuItem
               onClick={() => userLogout()}
               style={{ display: "block", padding: "0 0.5rem" }}
@@ -177,8 +172,8 @@ const Header2 = () => {
           </Menu>
         </li>
         <li>
-          <IconButton size="small" onClick={() => history.push("/cart")}>
-            <Badge badgeContent={cart && cart.length} color="secondary">
+          <IconButton size="medium" onClick={() => history.push("/cart")}>
+            <Badge badgeContent={cart && cart.length} sx={{ color: "#324d67" }}>
               <ShoppingCartOutlinedIcon />
             </Badge>
           </IconButton>

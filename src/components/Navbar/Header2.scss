@@ -20,7 +20,7 @@
   }
   #heading {
     font-family: $heading1;
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: bolder;
     text-shadow: 1px 2px 3px grey;
     color: #102a42;
@@ -30,8 +30,10 @@
     display: flex;
     align-content: center;
     justify-content: space-between;
+    align-items: center;
     list-style: none;
     margin-bottom: 0px !important;
+    padding-left: 3rem;
     .link-li {
       a {
         font-size: 1rem;
@@ -46,22 +48,35 @@
         }
       }
     }
+    .auth-ctr {
+      display: flex;
+      align-items: center;
+      div {
+        background-color: $clr-grey-3;
+      }
+    }
     #hamburger {
       display: none;
     }
   }
 
   @media only screen and (max-width: $small) {
-    .link-li {
-      display: none;
+    .link-ctr {
+      padding-left: 3rem;
+      .link-li {
+        display: none;
+      }
     }
     #hamburger {
       display: inline-block !important;
     }
   }
   @media only screen and (max-width: $medium) {
-    .link-li {
-      display: none;
+    .link-ctr {
+      padding-left: 3rem;
+      .link-li {
+        display: none;
+      }
     }
     #hamburger {
       display: inline-block !important;

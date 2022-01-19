@@ -6,9 +6,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { useHistory } from "react-router-dom";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import { IconButton } from "@mui/material";
+import { Avatar, Divider, Grid, IconButton } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import "./NavDrawer.scss";
+
 const NavDrawer = (props) => {
   const [state, setState] = React.useState(false);
+  const user = useSelector((state) => state.user);
   const history = useHistory();
 
   return (
@@ -18,7 +22,7 @@ const NavDrawer = (props) => {
       style={{ width: "5%px!important" }}
     >
       <Box
-        role="presentation"
+        className="mobile-nav"
         width={"500px"}
         onClick={() => props.setState(false)}
         onKeyDown={() => props.setState(false)}
@@ -27,14 +31,51 @@ const NavDrawer = (props) => {
           <CloseOutlinedIcon />
         </IconButton>
         <List>
-          <ListItem button onClick={() => history.push("/")}>
+          {user.email && (
+            <div className="profile-ctr">
+              <Avatar alt={user && user.name} src={user && user.name} />
+              <div>
+                <h6>{user.name}</h6>
+                <p>
+                  {user.email} <span>123456789</span>
+                </p>
+              </div>
+            </div>
+          )}
+          <Divider />
+          <ListItem id="mobile-link" button onClick={() => history.push("/")}>
             <ListItemText primary={"Home"} />
           </ListItem>
-          <ListItem button onClick={() => history.push("/product")}>
+          <ListItem
+            id="mobile-link"
+            button
+            onClick={() => history.push("/product")}
+          >
             <ListItemText primary={"Product"} />
           </ListItem>
-          <ListItem button onClick={() => history.push("/about")}>
+          <ListItem
+            id="mobile-link"
+            button
+            onClick={() => history.push("/about")}
+          >
             <ListItemText primary={"About"} />
+          </ListItem>
+          {user.email && (
+            <ListItem
+              id="mobile-link"
+              button
+              onClick={() => history.push("/about")}
+            >
+              <ListItemText primary={"Checkout"} />
+            </ListItem>
+          )}
+          <Divider />
+          <ListItem
+            id="mobile-link"
+            button
+            onClick={() => history.push("/about")}
+          >
+            <ListItemText primary={user.email ? "Logout" : "Login"} />
           </ListItem>
         </List>
       </Box>

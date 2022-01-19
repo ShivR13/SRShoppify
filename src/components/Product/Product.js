@@ -6,17 +6,13 @@ import {
   Select,
   MenuItem,
   IconButton,
-  Divider,
-  Collapse,
 } from "@mui/material";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { withRouter, useHistory } from "react-router-dom";
 import "./Product.scss";
-import Slider from "@mui/material/Slider";
 import useStyles from "./Inputstyles";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import Breadcrums from "../Breadcrums/Breadcrums";
 import { Checkbox } from "@material-ui/core";
@@ -25,6 +21,8 @@ import useWindow from "../Utility/useWindow";
 import WindowIcon from "@mui/icons-material/Window";
 import FormControl from "@mui/material/FormControl";
 import FilterAltOutlinedIcon from "@mui/icons-material/FilterAltOutlined";
+import { description } from "../../constant";
+
 const Product = () => {
   const [category, setCategory] = useState([]);
   const [company, setCompany] = useState([]);
@@ -64,28 +62,34 @@ const Product = () => {
     const cm = await res.data
       .map((item) => item.company)
       .filter((it, i, data) => data.indexOf(it) === i); //company
+    //fetching company...
 
     const ct = await res.data
       .map((item) => item.category)
       .filter((it, i, data) => data.indexOf(it) === i); //caterory
+    //fetching category...
 
     const cr = await res.data.map((item) => item.colors);
     //   .filter((it, i, data) => data.indexOf(it) === i); //color
     var newArray = Array.prototype.concat.apply([], cr);
     const cr2 = newArray.filter((it, i, data) => data.indexOf(it) === i);
     console.log("new cr", cr, newArray, cr2);
-
+    //fetching unique colors from array of array...
     const pr = await res.data
       .map((item) => item.price)
       .filter((it, i, data) => data.indexOf(it) === i); //price
+
     setPrice(pr);
+    //updating price state...
     setCategory(ct);
+    //updating category state...
     setCompany(cm);
+    //updating company state...
     setColors(cr2);
+    //updating  colors state...
   }, []);
 
   useEffect(() => {
-    console.log("filter", filter);
     filter &&
       Object.keys(filter).map((x) => {
         if (
@@ -98,7 +102,9 @@ const Product = () => {
           delete filter[x];
         }
       });
+    // removing empty key values from object...
     console.log("clean", filter);
+
     const query = data.filter((x) => {
       return Object.keys(filter).every((propertyName) =>
         propertyName === "colors"
@@ -108,12 +114,16 @@ const Product = () => {
           : x[propertyName] === filter[propertyName]
       );
     });
+    //filtering product based on condition object...
+
     console.log("find", query);
     setTempData(query);
+    //updating temp product array...
   }, [filter]);
 
   const sortData = (data, sortBy) => {
     setSortBy(sortBy);
+    //updating sortby state...
     var x = [];
     if (sortBy === "A-Z") {
       x = data.sort((a, b) => (a.name > b.name ? 1 : -1));
@@ -128,19 +138,14 @@ const Product = () => {
       x = data.sort((a, b) => (a.price < b.price ? 1 : -1));
     }
     setTempData(x);
+    //updating product array based on sorting condition...
   };
 
   return (
     <Grid className="product-ctr">
       <Breadcrums />
       <Container>
-        <Grid
-          container
-          lg={12}
-          md={12}
-          sm={12}
-          // columnSpacing={{ xs: 2, sm: 3, md: 6 }}
-        >
+        <Grid container lg={12} md={12} sm={12}>
           <Grid
             container
             item
@@ -389,11 +394,6 @@ const Product = () => {
                   style={{
                     backgroundColor: grid !== true ? "black" : "",
                     color: grid !== true ? "white" : "black",
-                    // boder: "2px solid black",
-                    // borderRadius: "0.25rem",
-                    // padding: "1",
-                    // margin: "0 0.3rem",
-                    // fontSize: "0.4rem",
                   }}
                   className="icon-btn"
                   disabled={grid !== true ? true : false}
@@ -544,8 +544,6 @@ const Product = () => {
                         lg={8}
                         md={8}
                         sm={12}
-                        // pl={{ sx: 1, md: 2, lg: 4 }}
-                        // pr={1}
                       >
                         <h4>{x.name}</h4>
                         <h5>${x.price.toLocaleString()}</h5>

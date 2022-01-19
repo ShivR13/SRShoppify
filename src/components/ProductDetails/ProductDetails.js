@@ -14,6 +14,7 @@ import img4 from "../../Images/Slider/img4.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartItem } from "../../Store/cartSlice";
 import { v4 as uuidv4 } from "uuid";
+import { description } from "../../constant";
 
 const ProductDetails = withRouter(({ props }) => {
   const [product, setProduct] = useState(null);
@@ -97,7 +98,7 @@ const ProductDetails = withRouter(({ props }) => {
                 </div>
 
                 <h5>${product.price.toLocaleString()}</h5>
-                <p>{product.description}</p>
+                <p>{description}</p>
 
                 <p className="info">
                   <span>Avalibility :</span>
