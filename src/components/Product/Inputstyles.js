@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   textFieldNotchedOutline: {},
   selectRoot: {
     "&.MuiSelect-select": {
-      width: "100px",
+      width: "120px",
       textAlign: "left",
       padding: "0 0.5rem !important",
       background: "#f1f5f8 !important",

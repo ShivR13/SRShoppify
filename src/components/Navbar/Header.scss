@@ -2,7 +2,6 @@
 
 #Name {
   margin-left: auto;
-  //   padding: 0 0.5em;
   display: none;
   @media screen and (max-width: $small) {
     display: flex;
@@ -15,12 +14,24 @@
     align-items: center;
   }
 }
+.close-on-collapse {
+  @media screen and (max-width: $small) {
+    display: none;
+  }
+  @media screen and (max-width: $medium) {
+    display: none;
+  }
+}
 #heading {
   font-family: $heading1;
   font-size: 1.5em;
   font-weight: bolder;
   text-shadow: 1px 2px 3px grey;
   color: #102a42;
+}
+#basic-navbar-nav {
+  background-color: white !important;
+  width: 100vw !important;
 }
 #heading > span {
   color: #ab7a5f;
@@ -45,11 +56,12 @@
 .nav-item {
   padding: 0 0.6em;
 }
-.nav-link {
+a.nav-link {
   display: inline-block;
   padding: 0.2em;
   margin: 0 0.6em;
   letter-spacing: 0.1rem;
+  cursor: pointer;
   &:hover,
   :focus,
   :active {
@@ -59,11 +71,36 @@
   &::after {
     border-bottom: 2px solid#ab7a5f;
   }
+
+  @media screen and (max-width: $small) {
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+    width: 100vw;
+    &:hover,
+    :focus,
+    :active {
+      background-color: pink;
+      cursor: pointer;
+    }
+  }
+  @media screen and (max-width: $medium) {
+    padding: 1rem 0;
+    display: block;
+    width: 100vw;
+    cursor: pointer;
+    &:hover,
+    :focus,
+    :active {
+      background-color: pink;
+    }
+  }
 }
-.active-link {
-  border-bottom: 2px solid#ab7a5f;
-}
+// .active-link {
+//   border-bottom: 2px solid#ab7a5f;
+// }
 #header {
   height: 4rem;
   background-color: white !important;
+  padding: 1.5rem 3rem;
 }

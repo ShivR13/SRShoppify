@@ -11,33 +11,43 @@ import img1 from "../../Images/Slider/img1.jpeg";
 import img2 from "../../Images/Slider/img2.jpeg";
 import img3 from "../../Images/Slider/img3.jpeg";
 import img4 from "../../Images/Slider/img4.jpeg";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartItem } from "../../Store/cartSlice";
+import { v4 as uuidv4 } from "uuid";
 
 const ProductDetails = withRouter(({ props }) => {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
   const [cartProduct, setCartProduct] = useState({});
   const [slider, setSlider] = useState();
-  const [sliderImg, setSliderImg] = useState([
-    // product.image + "",
-    // img1,
-    // img2,
-    // img3,
-    // img4,
-  ]);
+  const [sliderImg, setSliderImg] = useState([]);
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
+  const addToCart = async (product) => {
+    if (user.email) {
+      const obj = { ...product, ["email"]: user.email };
+      await setCartProduct({ ...product, ["email"]: user.email });
+      dispatch(addCartItem(obj));
+      console.log("loggedin", obj);
+    } else {
+      console.log("please login");
+    }
+  };
   useEffect(async () => {
     const res = await axios.get(`http://localhost:3004/products?id=${id}`);
     setProduct(res.data[0]);
     setSliderImg([res.data[0].image, img1, img2, img3, img4]);
     setSlider(res.data[0].image);
     setCartProduct({
-      pid: res.data[0]["id"],
+      pId: res.data[0]["id"],
       name: res.data[0]["name"],
       colors: res.data[0]["colors"][0],
       count: 1,
       price: res.data[0]["price"],
       company: res.data[0]["company"],
       image: res.data[0]["image"],
+      id: uuidv4(),
     });
     console.log("data", res.data[0]);
   }, []);
@@ -74,26 +84,6 @@ const ProductDetails = withRouter(({ props }) => {
                       }}
                     ></div>
                   ))}
-                {/* <div
-                  style={{
-                    backgroundImage: "url(" + product.image + ")",
-                  }}
-                ></div> */}
-                {/* <div
-                  style={{
-                    backgroundImage: "url(" + product.image + ")",
-                  }}
-                ></div>
-                <div
-                  style={{
-                    backgroundImage: "url(" + product.image + ")",
-                  }}
-                ></div>
-                <div
-                  style={{
-                    backgroundImage: "url(" + product.image + ")",
-                  }}
-                ></div> */}
               </Grid>
             </Grid>
             <Grid container item lg={6} md={12} sm={12}>
@@ -183,10 +173,7 @@ const ProductDetails = withRouter(({ props }) => {
                     <RemoveOutlinedIcon />
                   </IconButton>
                 </div>
-                <button
-                  id="btn"
-                  onClick={() => console.log("hiii", cartProduct)}
-                >
+                <button id="btn" onClick={() => addToCart(cartProduct)}>
                   Add to Cart
                 </button>
               </Grid>

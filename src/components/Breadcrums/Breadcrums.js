@@ -11,7 +11,7 @@ const Breadcrums = withRouter(({ history, ...props }) => {
   useEffect(() => {
     console.log(props, history, "props");
     console.log(pathname, "path");
-  });
+  }, []);
 
   const x = makeStyles(() => ({
     sep: {
@@ -27,27 +27,20 @@ const Breadcrums = withRouter(({ history, ...props }) => {
       <Breadcrumbs>
         {JSON.stringify(props)}
 
-        <Link underline="hover" color="inherit" href="/">
-          <h4> Home</h4>
+        <Link href="/" className="link">
+          <h4>Home</h4>
         </Link>
         {pathnames.map((x, i) => {
           return pathnames.length - 1 === i ? (
-            <Typography color="text.primary">
+            <Typography className="typo">
               <h4>{x}</h4>
             </Typography>
           ) : (
-            <Link underline="hover" color="inherit" href={`/${x}`}>
+            <Link href={`/${x}`} className="link">
               <h4>{x}</h4>
             </Link>
           );
         })}
-        {/* {pathnames.map((x, i) => (
-          <label>
-            {x}
-            {i}
-            {pathnames.length - 1 === i ? "shiv" : "BD"}
-          </label>
-        ))} */}
       </Breadcrumbs>
     </Grid>
   );

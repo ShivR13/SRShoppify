@@ -1,0 +1,188 @@
+@import "../../root.scss";
+.cart-ctr {
+  margin-top: 4rem;
+  color: $clr-grey-5;
+  font-weight: 400;
+  width: 100%;
+  text-transform: capitalize;
+  .top-ctr {
+    padding: 2rem;
+
+    .backbtn-ctr {
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      .clr-btn {
+        background-color: $clr-black !important;
+        &:hover {
+          color: $clr-white !important;
+        }
+      }
+    }
+    .total-amount {
+      display: flex;
+      justify-content: flex-end;
+      padding: 2rem 0;
+      color: $clr-grey-1;
+
+      .price-grid {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+      }
+
+      div > div {
+        border: 1px solid $clr-grey-8;
+        border-radius: $radius;
+        padding: 1.5rem 3rem;
+      }
+      button {
+        margin-top: 1rem;
+      }
+    }
+    hr {
+      width: 100%;
+      margin-top: 1rem;
+      margin-bottom: 3rem;
+    }
+    .item-ctr {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr auto;
+      align-items: center;
+      grid-template-rows: 75px !important;
+      gap: 3rem 1rem;
+      place-items: center;
+      margin-bottom: 3rem;
+      letter-spacing: 0.1rem;
+
+      .price-lg {
+        font-size: 1rem;
+        font-weight: 400;
+        color: $clr-primary-5;
+      }
+      .subtotal {
+        color: $clr-grey-2;
+      }
+
+      .title {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 100px 200px;
+        grid-template-rows: 75px;
+        place-items: center stretch;
+        gap: 1rem;
+        text-align: left;
+
+        .img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border-radius: $radius;
+          transition: $transition;
+        }
+      }
+      .prod-details {
+        font-size: 0.85rem !important;
+        h6 {
+          color: $clr-grey-1;
+          margin-bottom: 0px;
+          font-size: 0.85rem !important;
+        }
+        .colors-ctr {
+          & > div {
+            display: flex;
+            align-content: center;
+            font-size: 0.85rem !important;
+
+            #color-btn {
+              height: 0.7rem;
+              width: 0.7rem;
+              margin: 0.4rem 0.4rem 0 0.4rem;
+            }
+          }
+          .price-sm {
+            display: none;
+          }
+        }
+      }
+      .count-ctr {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $clr-grey-1;
+        font-weight: bold;
+        h5 {
+          display: flex;
+          flex-direction: row;
+          align-content: center;
+          text-align: center;
+          padding: 0.2rem 1rem;
+          margin-bottom: 0px;
+        }
+        button {
+          color: $clr-grey-1;
+          font-weight: bolder;
+        }
+      }
+      .delete-btn {
+        background-color: $clr-red-dark;
+        color: white;
+        border-radius: $radius;
+        font-size: 0.75rem;
+        padding: 0;
+      }
+    }
+    .heading {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr auto;
+      justify-items: center;
+      column-gap: 1rem;
+      width: 100%;
+      padding: 2rem;
+    }
+  }
+
+  @media only screen and(max-width:768px) {
+    .top-ctr {
+      padding: 2rem;
+      .heading {
+        display: none;
+      }
+      hr {
+        display: none;
+      }
+      .item-ctr {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 75px;
+        gap: 3rem 1rem;
+        place-items: center;
+
+        .title {
+          grid-template-rows: 75px;
+          display: grid;
+          grid-template-columns: 75px 125px;
+        }
+        .price-lg {
+          display: none;
+        }
+        .price-sm {
+          display: block;
+        }
+      }
+      .total-amount {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        padding: 1rem 0;
+      }
+    }
+  }
+  @media only screen and(max-width:600px) {
+  }
+}

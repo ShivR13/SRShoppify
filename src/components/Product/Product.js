@@ -53,10 +53,13 @@ const Product = () => {
 
   useEffect(async () => {
     console.log("hiiii");
-    const res = await axios.get("http://localhost:3004/products");
+    const res = await axios.get(
+      "https://my-json-server.typicode.com/ShivR13/json-shoppify/products"
+    );
     console.log(res.data, "data");
+    console.log("data");
     setData(res.data);
-    setTempData(res.data);
+    setTempData(() => res.data.sort((a, b) => (a.price > b.price ? 1 : -1)));
 
     const cm = await res.data
       .map((item) => item.company)
@@ -89,7 +92,8 @@ const Product = () => {
           filter[x] === undefined ||
           filter[x] === null ||
           filter[x] === "" ||
-          filter[x] === "All"
+          filter[x] === "All" ||
+          filter[x] === 0
         ) {
           delete filter[x];
         }
@@ -104,10 +108,27 @@ const Product = () => {
           : x[propertyName] === filter[propertyName]
       );
     });
-
     console.log("find", query);
     setTempData(query);
   }, [filter]);
+
+  const sortData = (data, sortBy) => {
+    setSortBy(sortBy);
+    var x = [];
+    if (sortBy === "A-Z") {
+      x = data.sort((a, b) => (a.name > b.name ? 1 : -1));
+    }
+    if (sortBy === "Z-A") {
+      x = data.sort((a, b) => (a.name < b.name ? 1 : -1));
+    }
+    if (sortBy === "Lowest") {
+      x = data.sort((a, b) => (a.price > b.price ? 1 : -1));
+    }
+    if (sortBy === "Highest") {
+      x = data.sort((a, b) => (a.price < b.price ? 1 : -1));
+    }
+    setTempData(x);
+  };
 
   return (
     <Grid className="product-ctr">
@@ -131,7 +152,6 @@ const Product = () => {
           >
             <div className="filter-card">
               <TextField
-                fullWidth
                 size="small"
                 variant="outlined"
                 label="Search.."
@@ -279,12 +299,18 @@ const Product = () => {
             </div>
             <div className="filter-card">
               <h5>Price</h5>
-              <div style={{ paddingLeft: "10px" }}>
+              <div
+                className="col"
+                // style={{ paddingLeft: "10px" }}
+              >
+                <label>
+                  $0.00 - $
+                  {filter.price ? Number(filter.price).toFixed(2) : "0.00"}
+                </label>
                 {price && (
-                  <Slider
-                    sx={{ width: "5em" }}
-                    defaultValue={Math.min(price)}
-                    valueLabelDisplay="auto"
+                  <input
+                    id="typeinp"
+                    type="range"
                     min={0}
                     name="price"
                     value={filter.price && filter.price}
@@ -292,6 +318,7 @@ const Product = () => {
                     onChange={(e) =>
                       setFilter({ ...filter, ["price"]: e.target.value })
                     }
+                    step="1"
                   />
                 )}
               </div>
@@ -332,16 +359,13 @@ const Product = () => {
             <Grid container item className="menu-ctr" lg={12} md={12} sm={12}>
               <div>
                 <IconButton
-                  size="small"
                   style={{
                     display: width < 780 ? "" : "none",
-                    backgroundColor: width < 780 && drawerfilter ? "black" : "",
+                    backgroundColor:
+                      width < 780 && drawerfilter ? "black" : "white",
                     color: width < 780 && drawerfilter ? "white" : "black",
-                    borderRadius: "0.25rem",
-                    padding: "1",
-                    margin: "0 0.3rem",
-                    fontSize: "0.4rem",
                   }}
+                  className="icon-btn"
                   onClick={() => {
                     setdrawerfilter(!drawerfilter);
                   }}
@@ -351,33 +375,27 @@ const Product = () => {
                 <IconButton
                   style={{
                     backgroundColor: grid === true ? "black" : "",
-                    boder: "2px solid black",
                     color: grid === true ? "white" : "black",
-                    borderRadius: "0.25rem",
-                    padding: "1",
-                    margin: "0 0.3rem",
-                    fontSize: "0.4rem",
                   }}
-                  size="small"
+                  className="icon-btn"
                   disabled={grid === true ? true : false}
                   onClick={() => {
                     setGrid(true);
                   }}
                 >
-                  {/* <GridViewOutlinedIcon /> */}
                   <WindowIcon />
                 </IconButton>
                 <IconButton
                   style={{
                     backgroundColor: grid !== true ? "black" : "",
                     color: grid !== true ? "white" : "black",
-                    boder: "2px solid black",
-                    borderRadius: "0.25rem",
-                    padding: "1",
-                    margin: "0 0.3rem",
-                    fontSize: "0.4rem",
+                    // boder: "2px solid black",
+                    // borderRadius: "0.25rem",
+                    // padding: "1",
+                    // margin: "0 0.3rem",
+                    // fontSize: "0.4rem",
                   }}
-                  size="small"
+                  className="icon-btn"
                   disabled={grid !== true ? true : false}
                   onClick={() => setGrid(false)}
                 >
@@ -392,10 +410,10 @@ const Product = () => {
                   style={{ border: "none", letterSpacing: "0.1rem" }}
                   size="small"
                   value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
+                  onChange={(e) => sortData(tempData, e.target.value)}
                 >
                   <MenuItem
-                    selected={sortBy === "Lowest"}
+                    // selected={sortBy === "Lowest"}
                     value={"Lowest"}
                     style={{
                       cursor: "pointer",

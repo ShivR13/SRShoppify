@@ -6,13 +6,16 @@ import Footer from "./components/Footer/Footer";
 import Product from "./components/Product/Product";
 import About from "./components/About/About";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
+import Header2 from "./components/Navbar/Header2";
+import Cart from "./components/Cart/Cart";
 function App() {
   const { isLoading, isAuthenticated, error, user, loginWithRedirect, logout } =
     useAuth0();
 
   return (
     <BrowserRouter>
-      <Header />
+      {/* <Header /> */}
+      <Header2 />
       <Switch>
         <Route exact path="/">
           <HomeContainer />
@@ -23,7 +26,7 @@ function App() {
         <Route exact path="/product">
           <Product />
         </Route>
-        <Route exact path="/demo" component={About} />
+        <Route exact path="/cart" component={Cart} />
 
         <Route exact path="/product/:id" component={ProductDetails} />
       </Switch>

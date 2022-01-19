@@ -1,0 +1,70 @@
+@import "../../root.scss";
+
+#nav-ctr {
+  height: 4rem;
+  width: 100vw;
+  position: fixed;
+  padding: 0 4rem;
+  top: 0;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  div {
+    display: flex;
+    align-content: center;
+  }
+  #heading {
+    font-family: $heading1;
+    font-size: 1.5em;
+    font-weight: bolder;
+    text-shadow: 1px 2px 3px grey;
+    color: #102a42;
+  }
+
+  .link-ctr {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    list-style: none;
+    margin-bottom: 0px !important;
+    .link-li {
+      a {
+        font-size: 1rem;
+        padding: 0.2em;
+        letter-spacing: 0.1rem;
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.55);
+
+        &:hover {
+          border-bottom: 2px solid#ab7a5f;
+          color: black;
+        }
+      }
+    }
+    #hamburger {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: $small) {
+    .link-li {
+      display: none;
+    }
+    #hamburger {
+      display: inline-block !important;
+    }
+  }
+  @media only screen and (max-width: $medium) {
+    .link-li {
+      display: none;
+    }
+    #hamburger {
+      display: inline-block !important;
+    }
+  }
+}
