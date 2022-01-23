@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SRShoppify/static/css/main.30320cd1.css",
-    "main.js": "/SRShoppify/static/js/main.c5d32329.js",
+    "main.js": "/SRShoppify/static/js/main.3fd2ee1d.js",
     "static/media/header1.jpeg": "/SRShoppify/static/media/header1.a876f19f6786a3aca992.jpeg",
     "static/media/img3.jpeg": "/SRShoppify/static/media/img3.3448d1f4cddb133705b9.jpeg",
     "static/media/header2.jpeg": "/SRShoppify/static/media/header2.789918645915c8acb36f.jpeg",
@@ -10,10 +10,10 @@
     "static/media/img2.jpeg": "/SRShoppify/static/media/img2.06aae7d037f6452cb87b.jpeg",
     "index.html": "/SRShoppify/index.html",
     "main.30320cd1.css.map": "/SRShoppify/static/css/main.30320cd1.css.map",
-    "main.c5d32329.js.map": "/SRShoppify/static/js/main.c5d32329.js.map"
+    "main.3fd2ee1d.js.map": "/SRShoppify/static/js/main.3fd2ee1d.js.map"
   },
   "entrypoints": [
     "static/css/main.30320cd1.css",
-    "static/js/main.c5d32329.js"
+    "static/js/main.3fd2ee1d.js"
   ]
 }
